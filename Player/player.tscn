@@ -1,0 +1,25 @@
+[gd_scene load_steps=3 format=3 uid="uid://gqwl3a2kd23x"]
+
+[ext_resource type="Texture2D" uid="uid://b6kice1vcdvqv" path="res://graphic/spaceSheep.png" id="1_dtims"]
+[ext_resource type="Script" uid="uid://b4l4r8k06w8v6" path="res://Player/player.gd" id="1_odeur"]
+
+[node name="Player" type="CharacterBody2D"]
+collision_layer = 2
+collision_mask = 5
+script = ExtResource("1_odeur")
+
+[node name="PlayerImage" type="Sprite2D" parent="."]
+texture = ExtResource("1_dtims")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+polygon = PackedVector2Array(0, -73, -47, 45, 48, 46)
+
+[node name="Marker2D" type="Marker2D" parent="."]
+position = Vector2(0, -90)
+gizmo_extents = 0.0
+
+[node name="CooldownTimer" type="Timer" parent="."]
+wait_time = 0.1
+one_shot = true
+
+[connection signal="timeout" from="CooldownTimer" to="." method="_on_cooldown_timer_timeout"]

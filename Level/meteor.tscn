@@ -1,0 +1,22 @@
+[gd_scene load_steps=3 format=3 uid="uid://b0ku03xtw7o4s"]
+
+[ext_resource type="Texture2D" uid="uid://ygnne3n44dck" path="res://graphic/meteor/1.png" id="1_2u7hb"]
+[ext_resource type="Script" uid="uid://bxbsmmwvxmjuc" path="res://Level/meteor.gd" id="1_kpigk"]
+
+[node name="Meteor" type="Area2D"]
+z_index = 2
+collision_layer = 4
+collision_mask = 2
+script = ExtResource("1_kpigk")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(3, 6)
+scale = Vector2(3, 3)
+texture = ExtResource("1_2u7hb")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+position = Vector2(-5.99432, -13.6449)
+scale = Vector2(2.98864, 2.85511)
+polygon = PackedVector2Array(-10, -23, 16, -17, 28, 4, 20, 16, 6, 21, -9, 14, -17, 20, -27, -4)
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

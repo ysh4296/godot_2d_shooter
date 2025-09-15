@@ -1,0 +1,65 @@
+[gd_scene load_steps=9 format=3 uid="uid://cfyvtnotxaufi"]
+
+[ext_resource type="Script" path="res://Level/level.gd" id="1_j4eas"]
+[ext_resource type="PackedScene" uid="uid://gqwl3a2kd23x" path="res://Player/player.tscn" id="1_wpe8w"]
+[ext_resource type="Texture2D" uid="uid://cbiyhpryf1nl0" path="res://graphic/background.png" id="2_5ckww"]
+[ext_resource type="PackedScene" uid="uid://b8hysjtlcm5iu" path="res://ui/ui.tscn" id="4_61xfh"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_aaelk"]
+size = Vector2(1481, 106)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cfqe0"]
+size = Vector2(1539.5, 109.125)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bnh8r"]
+size = Vector2(68, 1332)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_umesi"]
+size = Vector2(76, 1358)
+
+[node name="Level" type="Node2D"]
+script = ExtResource("1_j4eas")
+
+[node name="Player" parent="." instance=ExtResource("1_wpe8w")]
+z_index = 10
+position = Vector2(0, -3)
+
+[node name="background" type="Sprite2D" parent="."]
+position = Vector2(745, 642)
+scale = Vector2(1.00488, 0.661377)
+texture = ExtResource("2_5ckww")
+
+[node name="Borders" type="Node2D" parent="."]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Borders"]
+
+[node name="down" type="CollisionShape2D" parent="Borders/StaticBody2D"]
+position = Vector2(725.5, 1242)
+shape = SubResource("RectangleShape2D_aaelk")
+
+[node name="up" type="CollisionShape2D" parent="Borders/StaticBody2D"]
+position = Vector2(740, -15)
+shape = SubResource("RectangleShape2D_cfqe0")
+
+[node name="left" type="CollisionShape2D" parent="Borders/StaticBody2D"]
+position = Vector2(1, 601)
+shape = SubResource("RectangleShape2D_bnh8r")
+
+[node name="right" type="CollisionShape2D" parent="Borders/StaticBody2D"]
+position = Vector2(1500, 622)
+shape = SubResource("RectangleShape2D_umesi")
+
+[node name="MeteorTimer" type="Timer" parent="."]
+wait_time = 0.25
+autostart = true
+
+[node name="Meteors" type="Node2D" parent="."]
+
+[node name="Lasers" type="Node2D" parent="."]
+
+[node name="UI" parent="." instance=ExtResource("4_61xfh")]
+
+[node name="Stars" type="Node2D" parent="."]
+
+[connection signal="laser" from="Player" to="." method="_on_player_laser"]
+[connection signal="timeout" from="MeteorTimer" to="." method="_on_meteor_timer_timeout"]
