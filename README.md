@@ -1,4 +1,4 @@
-<img width="244" height="204" alt="스크린샷 2025-09-15 오후 1 06 27" src="https://github.com/user-attachments/assets/9e080179-5790-4f32-a1b3-8fdd4b33be48" /># godot_2d_shooter
+# godot_2d_shooter
 godot을 활용하여 슈팅게임을 개발하는 튜토리얼을 진행하였습니다. 기초 튜토리얼에서 조금 더 나아가 아트 및 오디오 에셋을 직접 개발, 적용하였습니다.
 
 ![overview](https://github.com/user-attachments/assets/e33a6cae-fcf8-456b-a267-2dacf33902e0)
